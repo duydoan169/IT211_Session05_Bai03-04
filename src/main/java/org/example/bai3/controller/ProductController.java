@@ -1,5 +1,6 @@
 package org.example.bai3.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.bai3.model.Product;
 import org.example.bai3.service.ProductService;
@@ -38,7 +39,7 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> putProduct(@PathVariable Long id, @RequestBody Product product){
+    public ResponseEntity<Product> putProduct(@PathVariable Long id,@Valid @RequestBody Product product){
         Product target = productService.findProductById(id);
         if (target == null){
             return ResponseEntity.notFound().build();
